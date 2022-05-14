@@ -58,7 +58,7 @@ export const ViewDiameter = styled.View`
     flex-direction: row;
 `;
 export const TitleDiameter = styled.Text`
-    font-family: '#000';
+    font-family: ${({ theme }) => theme.fonts.secondary_500};
     color: ${({ theme }) => theme.colors.text_detail};
     font-size: ${RFValue(10)}px;
     text-transform: uppercase;

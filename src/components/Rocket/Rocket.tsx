@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { StyleSheet, Text, View } from 'react-native';
+import moment from 'moment';
 
 import {
     Container,
@@ -51,15 +52,13 @@ export function Rocket({ data, ...rest }: RocketTypes) {
 
                         <ViewDiameter>
                             <TitleDiameter>Primeiro Voo: </TitleDiameter>
-                            <Diameter>{data.first_flight}</Diameter>
+                            <Diameter>{moment(data.first_flight).format("DD/MM/YYYY")}</Diameter>
                         </ViewDiameter>
 
                         {/* <Price>{data.mass.kg} </Price> */}
                     </Rent>
 
-                    {/* <Type>
-                        <MotorIcon />
-                    </Type> */}
+                 
                 </About>
             </Details>
 

@@ -16,9 +16,7 @@ import {
     Period,
     Price,
     Type,
-    CarImage,
-
-    
+    CarImage,    
 } from './styles';
 import { RectButtonProps } from 'react-native-gesture-handler';
   interface Props extends RectButtonProps {
