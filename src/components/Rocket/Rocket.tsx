@@ -1,7 +1,7 @@
 import React from 'react';
-                          
+
 import { StyleSheet, Text, View } from 'react-native';
-                          
+
 import {
     Container,
     Details,
@@ -9,42 +9,64 @@ import {
     Name,
     About,
     Rent,
-    Period,
+    Diameter,
     Price,
     Type,
     RocketImage,
+    ViewDiameter,
+    TitleDiameter,
+
 } from './styles';
 
-import {RocketTypes} from './types'
+import { RocketTypes } from './types'
 
-                          
-export function Rocket({ data, ...rest} :RocketTypes){    
+
+export function Rocket({ data, ...rest }: RocketTypes) {
     //console.log(data);
-     
-   return (
-           <Container style={{backgroundColor: 'white'}}>
-                  {/* <Details>
-                   <Brand> {data.brand} </Brand>
-                   <Name>{data.name}</Name>
+    console.log(data.name);
     
+    return (
+
+        <Container style={{
+            shadowColor: "#000", shadowOffset: { width: 0, height: 4, },
+            shadowOpacity: 0.30,
+            shadowRadius: 4.65,
+            elevation: 8,
+            backgroundColor: 'white'
+        }}>
+            <Details>
+                <Name>{data.name}</Name>
+
                 <About>
                     <Rent>
-                        <Period>{data.rent.period} </Period>
-                        <Price>{`R$ ${data.rent.price}`} </Price>
+                        <ViewDiameter>
+                            <TitleDiameter>Diametro: </TitleDiameter>
+                            <Diameter>{data.diameter.meters}</Diameter>
+                        </ViewDiameter>
+
+                        <ViewDiameter>
+                            <TitleDiameter>Massa: </TitleDiameter>
+                            <Diameter>{data.mass.kg}</Diameter>
+                        </ViewDiameter>
+
+                        <ViewDiameter>
+                            <TitleDiameter>Primeiro Voo: </TitleDiameter>
+                            <Diameter>{data.first_flight}</Diameter>
+                        </ViewDiameter>
+
+                        {/* <Price>{data.mass.kg} </Price> */}
                     </Rent>
 
-                    <Type>
+                    {/* <Type>
                         <MotorIcon />
-                    </Type>
+                    </Type> */}
                 </About>
-               </Details> */}
+            </Details>
 
-               <RocketImage 
-                    //source={{ uri: data.flickr_images[0]}}
-                    source={{ uri: 'https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Zm9jdXN8ZW58MHx8MHx8&w=1000&q=80'}}
-            
-                    resizeMode="contain" //autoajuste para imagens acima    
-             />              
-           </Container>
-      );     
-    }
+            <RocketImage
+                source={{ uri: data.flickr_images[0] }}
+                resizeMode="contain" //autoajuste para imagens acima    
+            />
+        </Container>
+    );
+}

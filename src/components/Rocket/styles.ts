@@ -1,8 +1,9 @@
 import { RectButton } from 'react-native-gesture-handler';
+import { TouchableOpacity } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
                                              
-export const Container = styled(RectButton)`
+export const Container = styled(TouchableOpacity)`
     width: 100%;
     height: 126px;
     background-color: ${({ theme }) => theme.colors.background_secondary};
@@ -13,6 +14,8 @@ export const Container = styled(RectButton)`
 
     padding: 24px;
     margin-bottom: 16px;
+ 
+ 
 `;
   
 export const Details = styled.View`
@@ -43,13 +46,24 @@ export const Rent = styled.View`
     margin-right: 24px;
 `;
 
-export const Period = styled.Text`
+export const Diameter = styled.Text`
      font-family: ${({ theme }) => theme.fonts.secondary_500};
      color: ${({ theme }) => theme.colors.text_detail};
      font-size: ${RFValue(10)}px;
 
      text-transform: uppercase;
 `;
+
+export const ViewDiameter = styled.View`
+    flex-direction: row;
+`;
+export const TitleDiameter = styled.Text`
+    font-family: '#000';
+    color: ${({ theme }) => theme.colors.text_detail};
+    font-size: ${RFValue(10)}px;
+    text-transform: uppercase;
+`;
+    
 
 export const Price = styled.Text`
     font-family: ${({ theme }) => theme.fonts.secondary_500};

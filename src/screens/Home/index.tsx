@@ -119,7 +119,7 @@ export function Home() {
                        <Rocket data={item} />
                     }
                     showsVerticalScrollIndicator={false}
-                    style={{backgroundColor: 'red', padding: 24}}
+                    style={{backgroundColor: '#f2f2f2', padding: 24}}
                 /> 
             }
 
