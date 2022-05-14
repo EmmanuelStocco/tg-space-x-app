@@ -7,40 +7,47 @@ import { Scheduling } from '../screens/Scheduling'
 import { SchedullingDetails } from '../screens/SchedullingDetails'
 import { SchedulingComplete } from '../screens/SchedulingComplete'
 import { MyCars } from '../screens/MyCars';
+import { StarlinkView } from '../screens/Starlink';
 
-const { Navigator, Screen} = createNativeStackNavigator();
-  
-export function StackRoutes(){
-                          
+const { Navigator, Screen } = createNativeStackNavigator();
+
+export function StackRoutes() {
+
    return (
-     <Navigator screenOptions={{ headerShown: false }}>
-         <Screen 
+      <Navigator screenOptions={{ headerShown: false }}>
+         <Screen //Home == Rockets
             name='Home'
             component={Home}
          />
-         <Screen 
+
+         <Screen //StarlinksView
+            name='Starlinks'
+            component={StarlinkView}
+         />
+
+         <Screen
             name='CarDetails'
             component={CarDetails}
          />
-         <Screen 
+         <Screen
             name='Scheduling'
             component={Scheduling}
          />
-         <Screen 
+         <Screen
             name='SchedullingDetails'
             component={SchedullingDetails}
          />
-         <Screen 
+         <Screen
             name='SchedulingComplete'
             component={SchedulingComplete}
          />
 
-         <Screen 
+         <Screen
             name='MyCars'
             component={MyCars}
-         /> 
-     </Navigator>
-  
-      );
-     
-    }
+         />
+      </Navigator>
+
+   );
+
+}

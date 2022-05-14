@@ -54,12 +54,9 @@ export function Rocket({ data, ...rest }: RocketTypes) {
                             <TitleDiameter>Primeiro Voo: </TitleDiameter>
                             <Diameter>{moment(data.first_flight).format("DD/MM/YYYY")}</Diameter>
                         </ViewDiameter>
-
-                        {/* <Price>{data.mass.kg} </Price> */}
-                    </Rent>
-
-                 
-                </About>
+ 
+                    </Rent> 
+                </About> 
             </Details>
 
             <RocketImage

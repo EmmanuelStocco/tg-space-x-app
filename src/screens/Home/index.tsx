@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { StatusBar, FlatList, Text } from 'react-native'
+import { StatusBar, FlatList, Text, View } from 'react-native'
 import { RFValue } from 'react-native-responsive-fontsize'
-import { getStatusBarHeight } from 'react-native-iphone-x-helper'
 import { Ionicons } from '@expo/vector-icons'
-import { useNavigation, CommonActions } from '@react-navigation/native';
-import { CarDetails } from '../CarDetails';
+import { useNavigation } from '@react-navigation/native';
 import { useTheme } from 'styled-components';
 import Logo from '../../assets/logo.svg'
-import api from '../../services/api';
 
-import { CarDTO } from '../../dtos/CarDTO'; 
-import { Car } from '../../components/Car';
+import { CarDTO } from '../../dtos/CarDTO';
 import { Load } from '../../components/Load';
 
 import { getRocketsService } from '../../services/Rockets';
@@ -22,13 +18,11 @@ import {
     Header,
     TotalCars,
     HeaderContent,
-    CarList,
     MyCarsButtom,
-    RocketsList
+    DivViewNavbar,
+    ImageScreen,
+    ButtonNextScreen
 } from './styles';
-
-import { Diameter } from './types'
-
 
 
 export function Home() {
@@ -36,12 +30,6 @@ export function Home() {
     const [loading, setLoading] = useState(true)
     const navigation = useNavigation<any>()
     const theme = useTheme();
-
-    const [diameter, setDiamter] = useState<Diameter>();
-    const [primaryFlight, setPrimaryFlight] = useState<number>();
-    const [mass, setMass] = useState<number>();
-    const [imageRocket, setImageRocket] = useState<string>();
-    const [rocketName, setRocketName] = useState<string>();
 
     const [rocketsList, setRocketsList] = useState<any[]>();
 
@@ -53,18 +41,12 @@ export function Home() {
         navigation.navigate('MyCars')
     }
 
+    function handleStarlinks() {
+        navigation.navigate('Starlinks')
+    }
+
 
     useEffect(() => {
-        // async function fetchCars() {
-        //     try {
-        //         const response = await api.get('/cars');
-        //         setCars(response.data) 
-        //     } catch (error) {
-        //         console.log(error)
-        //     } finally {
-        //         setLoading(false)
-        //     }
-        // }
 
         async function runGetServiceRockets() {
             try {
@@ -78,11 +60,10 @@ export function Home() {
             }
         }
 
-        //fetchCars();
         runGetServiceRockets();
     }, []);
 
-     
+
 
     return (
         <Container>
@@ -102,35 +83,58 @@ export function Home() {
                     </TotalCars>
                 </HeaderContent>
             </Header>
-            
+
             {loading ? <Load /> :
-                // <CarList
-                //     data={cars}
-                //     keyExtractor={item => String(item.id)}
-                //     renderItem={({ item }) =>
-                //         <Car data={item} onPress={() => handleCarDetails(item)}
-                //         />}
-                // />
 
                 <FlatList
                     data={rocketsList}
                     keyExtractor={item => String(item.id)}
                     renderItem={({ item }) =>
-                       <Rocket data={item} />
+                        <Rocket data={item} />
                     }
                     showsVerticalScrollIndicator={false}
-                    style={{backgroundColor: '#f2f2f2', padding: 24}}
-                /> 
+                    style={{ backgroundColor: '#f2f2f2', padding: 24 }}
+                />
             }
 
-            <MyCarsButtom onPress={handleOpenMyCars}>
-                <Ionicons
-                    name="ios-car-sport"
-                    size={32}
-                    color={theme.colors.shape}
 
-                />
-            </MyCarsButtom>
+
+            <DivViewNavbar>
+
+ 
+                {/* <MyCarsButtom onPress={handleOpenMyCars}>
+                    <Ionicons
+                        name="ios-car-sport"
+                        size={32}
+                        color={theme.colors.shape}
+
+                    />
+                </MyCarsButtom> */}
+                
+
+            <View style={{flexDirection: 'row', marginBottom: 'auto', marginTop: 'auto'}}>
+               <ButtonNextScreen onPress={handleStarlinks}> 
+                   <ImageScreen source={{uri: 'https://previews.123rf.com/images/rdesign0209/rdesign02091906/rdesign0209190602590/126200255-coin-icon.jpg'}} />
+               </ButtonNextScreen>
+
+               <ButtonNextScreen> 
+                   <ImageScreen source={{uri: 'https://previews.123rf.com/images/rdesign0209/rdesign02091906/rdesign0209190602590/126200255-coin-icon.jpg'}} />
+               </ButtonNextScreen>
+
+               <ButtonNextScreen> 
+                   <ImageScreen source={{uri: 'https://previews.123rf.com/images/rdesign0209/rdesign02091906/rdesign0209190602590/126200255-coin-icon.jpg'}} />
+               </ButtonNextScreen>
+
+               <ButtonNextScreen> 
+                   <ImageScreen source={{uri: 'https://previews.123rf.com/images/rdesign0209/rdesign02091906/rdesign0209190602590/126200255-coin-icon.jpg'}} />
+               </ButtonNextScreen>
+
+               <ButtonNextScreen> 
+                   <ImageScreen source={{uri: 'https://previews.123rf.com/images/rdesign0209/rdesign02091906/rdesign0209190602590/126200255-coin-icon.jpg'}} />
+               </ButtonNextScreen>
+               </View>
+
+            </DivViewNavbar>
 
         </Container>
 
