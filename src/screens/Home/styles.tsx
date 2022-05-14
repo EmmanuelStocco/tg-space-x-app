@@ -40,6 +40,13 @@ export const CarList = styled(FlatList).attrs({
    showsVerticalScrollIndicator: false
 })` ` as React.ComponentType as new <CarDTO>() => FlatList<CarDTO>;
 
+export const RocketsList = styled(FlatList).attrs({
+    contentContainerStyle: {
+     padding: 24
+    },
+    showsVerticalScrollIndicator: false
+ })` ` as React.ComponentType as new <any> () => FlatList<any>;
+
 export const MyCarsButtom = styled(RectButton)`
     width: 60px;
     height: 60px;

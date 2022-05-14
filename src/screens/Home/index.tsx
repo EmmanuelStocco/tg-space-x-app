@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { StatusBar } from 'react-native'
+import { StatusBar, FlatList, Text } from 'react-native'
 import { RFValue } from 'react-native-responsive-fontsize'
 import { getStatusBarHeight } from 'react-native-iphone-x-helper'
 import { Ionicons } from '@expo/vector-icons'
-
+import { useNavigation, CommonActions } from '@react-navigation/native';
+import { CarDetails } from '../CarDetails';
+import { useTheme } from 'styled-components';
 import Logo from '../../assets/logo.svg'
 import api from '../../services/api';
-import { CarDTO } from '../../dtos/CarDTO';
 
+import { CarDTO } from '../../dtos/CarDTO'; 
 import { Car } from '../../components/Car';
 import { Load } from '../../components/Load';
 
-import { getCompanyService } from '../../services/Comapany';
-import { getCrewService } from '../../services/Crew';
-import { getDragonsService } from '../../services/Dragons/'; 
 import { getRocketsService } from '../../services/Rockets';
-import { getStarlinksService } from '../../services/Starlinks';
+
+import { Rocket } from '../../components/Rocket/Rocket';
 
 import {
     Container,
@@ -23,11 +23,12 @@ import {
     TotalCars,
     HeaderContent,
     CarList,
-    MyCarsButtom
+    MyCarsButtom,
+    RocketsList
 } from './styles';
-import { useNavigation, CommonActions } from '@react-navigation/native';
-import { CarDetails } from '../CarDetails';
-import { useTheme } from 'styled-components';
+
+import { Diameter } from './types'
+
 
 
 export function Home() {
@@ -35,6 +36,14 @@ export function Home() {
     const [loading, setLoading] = useState(true)
     const navigation = useNavigation<any>()
     const theme = useTheme();
+
+    const [diameter, setDiamter] = useState<Diameter>();
+    const [primaryFlight, setPrimaryFlight] = useState<number>();
+    const [mass, setMass] = useState<number>();
+    const [imageRocket, setImageRocket] = useState<string>();
+    const [rocketName, setRocketName] = useState<string>();
+
+    const [rocketsList, setRocketsList] = useState<any[]>();
 
     function handleCarDetails(car: CarDTO) {
         navigation.navigate('CarDetails', { car })
@@ -46,26 +55,34 @@ export function Home() {
 
 
     useEffect(() => {
-        async function fetchCars() {
+        // async function fetchCars() {
+        //     try {
+        //         const response = await api.get('/cars');
+        //         setCars(response.data) 
+        //     } catch (error) {
+        //         console.log(error)
+        //     } finally {
+        //         setLoading(false)
+        //     }
+        // }
+
+        async function runGetServiceRockets() {
             try {
-                const response = await api.get('/cars');
-                setCars(response.data)
+                const res = await getRocketsService();
+                setRocketsList(res.data)
             } catch (error) {
-                console.log(error)
+                console.log('my error');
+                console.log(error);
             } finally {
                 setLoading(false)
             }
         }
 
-        async function runGetServiceCompany() {
-            const res = await getCompanyService();
-            console.log('res');
-            console.log(res);
-        }
-
-        fetchCars();
-        runGetServiceCompany();
+        //fetchCars();
+        runGetServiceRockets();
     }, []);
+
+     
 
     return (
         <Container>
@@ -85,14 +102,25 @@ export function Home() {
                     </TotalCars>
                 </HeaderContent>
             </Header>
+            
             {loading ? <Load /> :
-                <CarList
-                    data={cars}
+                // <CarList
+                //     data={cars}
+                //     keyExtractor={item => String(item.id)}
+                //     renderItem={({ item }) =>
+                //         <Car data={item} onPress={() => handleCarDetails(item)}
+                //         />}
+                // />
+
+                <FlatList
+                    data={rocketsList}
                     keyExtractor={item => String(item.id)}
                     renderItem={({ item }) =>
-                        <Car data={item} onPress={() => handleCarDetails(item)}
-                        />}
-                />
+                       <Rocket data={item} />
+                    }
+                    showsVerticalScrollIndicator={false}
+                    style={{backgroundColor: 'red', padding: 24}}
+                /> 
             }
 
             <MyCarsButtom onPress={handleOpenMyCars}>
