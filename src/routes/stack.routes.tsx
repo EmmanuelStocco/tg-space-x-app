@@ -25,6 +25,21 @@ export function StackRoutes() {
             component={StarlinkView}
          />
 
+         <Screen //Dragons
+            name='Dragons'
+            component={StarlinkView}
+         />
+
+         <Screen //Crew
+            name='Crew'
+            component={StarlinkView}
+         />
+
+         <Screen //Company
+            name='Company'
+            component={StarlinkView}
+         />
+
          <Screen
             name='CarDetails'
             component={CarDetails}

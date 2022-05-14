@@ -5,6 +5,7 @@ import { Ionicons } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native';
 import { useTheme } from 'styled-components';
 import Logo from '../../assets/logo.svg' 
+import { NavbarNavigation } from '../../components/NavbarNavigation';
 
 import { CarDTO } from '../../dtos/CarDTO';  
 import { Load } from '../../components/Load';
@@ -89,14 +90,16 @@ export function StarlinkView() {
                 /> 
             }
 
-            <MyCarsButtom onPress={handleOpenMyCars}>
+            {/* <MyCarsButtom onPress={handleOpenMyCars}>
                 <Ionicons
                     name="ios-car-sport"
                     size={32}
                     color={theme.colors.shape}
 
                 />
-            </MyCarsButtom>
+            </MyCarsButtom> */}
+
+            <NavbarNavigation />
         </Container>
 
     );
