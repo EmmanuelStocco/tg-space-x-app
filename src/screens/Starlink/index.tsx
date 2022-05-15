@@ -52,7 +52,6 @@ export function StarlinkView() {
                 setLoading(false)
             }
         }
- 
         runGetService();
     }, []);
 

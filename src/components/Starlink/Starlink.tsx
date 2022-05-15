@@ -24,46 +24,44 @@ import { StarlinkTypes } from './types'
 
 export function Starlink({ data, ...rest }: StarlinkTypes) {
     //console.log(data);
-    console.log(data.name);
+    console.log(data);
     
-    return (
-        <Text> olá mundo </Text>
+    return ( 
+        <Container style={{
+            shadowColor: "#000", shadowOffset: { width: 0, height: 4, },
+            shadowOpacity: 0.30,
+            shadowRadius: 4.65,
+            elevation: 8,
+            backgroundColor: 'white'
+        }}>
+            <Details>
+                <Name>{data.spaceTrack.OBJECT_NAME}</Name>
 
-        // <Container style={{
-        //     shadowColor: "#000", shadowOffset: { width: 0, height: 4, },
-        //     shadowOpacity: 0.30,
-        //     shadowRadius: 4.65,
-        //     elevation: 8,
-        //     backgroundColor: 'white'
-        // }}>
-        //     <Details>
-        //         <Name>{data.name}</Name>
+                <About>
+                    <Rent>
+                        <ViewDiameter>
+                            <TitleDiameter>Inclinação: </TitleDiameter>
+                            <Diameter>{data?.INCLINATION}</Diameter>
+                        </ViewDiameter>
 
-        //         <About>
-        //             <Rent>
-        //                 <ViewDiameter>
-        //                     <TitleDiameter>Diametro: </TitleDiameter>
-        //                     <Diameter>{data.diameter.meters}</Diameter>
-        //                 </ViewDiameter>
+                        <ViewDiameter>
+                            <TitleDiameter>EXCENTRICIDADE: </TitleDiameter>
+                            <Diameter>{data?.ECCENTRICITY}</Diameter>
+                        </ViewDiameter>
 
-        //                 <ViewDiameter>
-        //                     <TitleDiameter>Massa: </TitleDiameter>
-        //                     <Diameter>{data.mass.kg}</Diameter>
-        //                 </ViewDiameter>
-
-        //                 <ViewDiameter>
-        //                     <TitleDiameter>Primeiro Voo: </TitleDiameter>
-        //                     <Diameter>{moment(data.first_flight).format("DD/MM/YYYY")}</Diameter>
-        //                 </ViewDiameter>
+                        <ViewDiameter>
+                            <TitleDiameter>Data de criação: </TitleDiameter>
+                            <Diameter>{moment(data?.CREATION_DATE).format("DD/MM/YYYY")}</Diameter>
+                        </ViewDiameter>
  
-        //             </Rent> 
-        //         </About> 
-        //     </Details>
+                    </Rent> 
+                </About> 
+            </Details>
 
-        //     <RocketImage
-        //         source={{ uri: data.flickr_images[0] }}
-        //         resizeMode="contain" //autoajuste para imagens acima    
-        //     />
-        // </Container>
+            {/* <RocketImage
+                source={{ uri: data.flickr_images[0] }}
+                resizeMode="contain" //autoajuste para imagens acima    
+            /> */}
+        </Container>
     );
 }
