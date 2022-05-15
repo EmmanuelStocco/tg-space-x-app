@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useTheme } from 'styled-components';
 import Logo from '../../assets/logo.svg' 
 import { NavbarNavigation } from '../../components/NavbarNavigation';
-
+import Space from '../../assets/Space.svg'
 import { CarDTO } from '../../dtos/CarDTO';  
 import { Load } from '../../components/Load';
  
@@ -28,7 +28,7 @@ export function CrewsViews() {
     const navigation = useNavigation<any>()
     const theme = useTheme(); 
 
-    const [starlinksList, setStarlinksList] = useState<any[]>();
+    const [crewsList, setCrewsList] = useState<any[]>();
 
     function handleCarDetails(car: CarDTO) {
         navigation.navigate('CarDetails', { car })
@@ -43,7 +43,7 @@ export function CrewsViews() {
         async function runGetService() {
             try {
                 const res = await getCrewService();
-                setStarlinksList(res.data)
+                setCrewsList(res.data)
             } catch (error) {
                 console.log('my error');
                 console.log(error);
@@ -64,13 +64,13 @@ export function CrewsViews() {
             />
             <Header>
                 <HeaderContent>
-                    <Logo
+                    <Space
                         width={RFValue(108)}
                         height={RFValue(12)}
                     />
 
                     <TotalCars>
-                        Total de {cars.length} Carros
+                        Total de {crewsList?.length} Tripulantes Dragons
                     </TotalCars>
                 </HeaderContent>
             </Header>
@@ -78,7 +78,7 @@ export function CrewsViews() {
             {loading ? <Load /> : 
 
                 <FlatList
-                    data={starlinksList}
+                    data={crewsList}
                     keyExtractor={item => String(item.id)}
                     renderItem={({ item }) =>
                        <Crew data={item} />

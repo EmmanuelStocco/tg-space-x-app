@@ -3,6 +3,8 @@ import { StatusBar, FlatList, Text, View } from 'react-native'
 import { RFValue } from 'react-native-responsive-fontsize'
 import Logo from '../../assets/logo.svg'
 import { Load } from '../../components/Load';
+import Space from '../../assets/Space.svg'
+
 
 import { getRocketsService } from '../../services/Rockets';
 import { Rocket } from '../../components/Rocket/Rocket';
@@ -45,13 +47,14 @@ export function Home() {
             />
             <Header>
                 <HeaderContent>
-                    <Logo
+                    <Space
                         width={RFValue(108)}
                         height={RFValue(12)}
+                        style={{ backgroundColor:' white'}}
                     />
 
                     <TotalCars>
-                        Total de Carros
+                        Total de {rocketsList?.length} Naves
                     </TotalCars>
                 </HeaderContent>
             </Header>

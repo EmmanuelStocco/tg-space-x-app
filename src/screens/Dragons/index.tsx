@@ -9,7 +9,7 @@ import { NavbarNavigation } from '../../components/NavbarNavigation';
 
 import { CarDTO } from '../../dtos/CarDTO';  
 import { Load } from '../../components/Load';
-
+import Space from '../../assets/Space.svg'
 import { getDragonsService } from '../../services/Dragons';
 import { Dragon } from '../../components/Dragon';
 import { DragonTypes } from '../../components/Dragon/types';
@@ -55,13 +55,13 @@ export function DragonsView() {
             />
             <Header>
                 <HeaderContent>
-                    <Logo
+                    <Space
                         width={RFValue(108)}
                         height={RFValue(12)}
                     />
 
                     <TotalCars>
-                        Total de {cars.length} Carros
+                        Total de {starlinksList?.length} Dragons
                     </TotalCars>
                 </HeaderContent>
             </Header>

@@ -9,7 +9,7 @@ import { NavbarNavigation } from '../../components/NavbarNavigation';
 
 import { CarDTO } from '../../dtos/CarDTO';
 import { Load } from '../../components/Load';
-
+import Space from '../../assets/Space.svg'
 import { getCompanyService } from '../../services/Comapany';
 import { CompanyCarton } from '../../components/CompanyCarton';
 import { Linking } from 'react-native';
@@ -64,14 +64,9 @@ export function CompanyView() {
             />
             <Header>
                 <HeaderContent>
-                    <Logo
-                        width={RFValue(108)}
-                        height={RFValue(12)}
+                    <Space  
                     />
-
-                    <TotalCars>
-                        Total de {cars.length} Carros
-                    </TotalCars>
+ 
                 </HeaderContent>
             </Header>
 
@@ -90,19 +85,19 @@ export function CompanyView() {
 
                     <View style={{ alignItems: 'center' }}>
 
-                        <ButtonRedirectetSocialMidia onPress={()=> redirectSocialMidia(companyData.links.website)}>
+                        <ButtonRedirectetSocialMidia onPress={()=> redirectSocialMidia(companyData?.links.website)}>
                             <TitleSocialMidia> Website</TitleSocialMidia>
                         </ButtonRedirectetSocialMidia>
 
-                        <ButtonRedirectetSocialMidia onPress={()=> redirectSocialMidia(companyData.links.flickr)}>
+                        <ButtonRedirectetSocialMidia onPress={()=> redirectSocialMidia(companyData?.links.flickr)}>
                             <TitleSocialMidia> Flickr</TitleSocialMidia>
                         </ButtonRedirectetSocialMidia>
 
-                        <ButtonRedirectetSocialMidia onPress={()=> redirectSocialMidia(companyData.links.twitter)}>
+                        <ButtonRedirectetSocialMidia onPress={()=> redirectSocialMidia(companyData?.links.twitter)}>
                             <TitleSocialMidia> Twitter </TitleSocialMidia>
                         </ButtonRedirectetSocialMidia>
   
-                        <ButtonRedirectetSocialMidia onPress={()=> redirectSocialMidia(companyData.links.elon_twitter)}>
+                        <ButtonRedirectetSocialMidia onPress={()=> redirectSocialMidia(companyData?.links.elon_twitter)}>
                             <TitleSocialMidia> Twitter do Criador </TitleSocialMidia>
                         </ButtonRedirectetSocialMidia>
                     </View>

@@ -6,6 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useTheme } from 'styled-components';
 import Logo from '../../assets/logo.svg' 
 import { NavbarNavigation } from '../../components/NavbarNavigation';
+import Space from '../../assets/Space.svg'
 
 import { CarDTO } from '../../dtos/CarDTO';  
 import { Load } from '../../components/Load';
@@ -65,13 +66,12 @@ export function StarlinkView() {
             />
             <Header>
                 <HeaderContent>
-                    <Logo
-                        width={RFValue(108)}
-                        height={RFValue(12)}
+                    <Space
+                       
                     />
 
                     <TotalCars>
-                        Total de {cars.length} Carros
+                        Total de {starlinksList?.length} Starlinks
                     </TotalCars>
                 </HeaderContent>
             </Header>
