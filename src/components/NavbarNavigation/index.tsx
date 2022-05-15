@@ -34,11 +34,11 @@ export function NavbarNavigation() {
                     <ImageScreen name={'firework'} />
                 </ButtonNextScreen>
 
-                <ButtonNextScreen onPress={() => handleStarlinks('Crew')}> 
+                <ButtonNextScreen onPress={() => handleStarlinks('Crews')}> 
                     <ImageScreen name={'account-group'} />
                 </ButtonNextScreen>
 
-                <ButtonNextScreen onPress={() => handleStarlinks('domain')}>
+                <ButtonNextScreen onPress={() => handleStarlinks('Company')}>
                     <ImageScreen name={'rocket'} />
                 </ButtonNextScreen>
             </View>

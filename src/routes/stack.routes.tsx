@@ -8,6 +8,9 @@ import { SchedullingDetails } from '../screens/SchedullingDetails'
 import { SchedulingComplete } from '../screens/SchedulingComplete'
 import { MyCars } from '../screens/MyCars';
 import { StarlinkView } from '../screens/Starlink';
+import { CrewsViews } from '../screens/Crews';
+import { CompanyView } from '../screens/Company';
+import { DragonsView } from '../screens/Dragons';
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
@@ -27,17 +30,17 @@ export function StackRoutes() {
 
          <Screen //Dragons
             name='Dragons'
-            component={StarlinkView}
+            component={DragonsView}
          />
 
          <Screen //Crew
-            name='Crew'
-            component={StarlinkView}
+            name='Crews'
+            component={CrewsViews}
          />
 
          <Screen //Company
             name='Company'
-            component={StarlinkView}
+            component={CompanyView}
          />
 
          <Screen
