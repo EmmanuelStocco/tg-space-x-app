@@ -22,8 +22,7 @@ export function Home() {
     const [loading, setLoading] = useState(true)
     const [rocketsList, setRocketsList] = useState<any[]>();
 
-    useEffect(() => {
-
+    useEffect(() => { 
         async function runGetServiceRockets() {
             try {
                 const res = await getRocketsService();
@@ -34,8 +33,7 @@ export function Home() {
             } finally {
                 setLoading(false)
             }
-        }
-
+        } 
         runGetServiceRockets();
     }, []);
 
