@@ -71,7 +71,7 @@ export function Home() {
                 />
             }
 
-            <NavbarNavigation />
+            <NavbarNavigation currentRoute={'rocket'}/>
         </Container>
 
     );

@@ -87,7 +87,7 @@ export function CrewsViews() {
                     style={{backgroundColor: '#f2f2f2', padding: 24}}
                 /> 
             } 
-            <NavbarNavigation />
+            <NavbarNavigation currentRoute={'crews'} />
         </Container>
 
     );

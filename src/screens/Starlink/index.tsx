@@ -98,7 +98,7 @@ export function StarlinkView() {
                 />
             </MyCarsButtom> */}
 
-            <NavbarNavigation />
+            <NavbarNavigation currentRoute={'sattelite'} />
         </Container>
 
     );

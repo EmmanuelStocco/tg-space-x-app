@@ -22,9 +22,7 @@ import {
 import { RocketTypes } from './types'
 
 
-export function Rocket({ data, ...rest }: RocketTypes) {
-    //console.log(data);
-    console.log(data.name);
+export function Rocket({ data, ...rest }: RocketTypes) { 
     
     return (
 

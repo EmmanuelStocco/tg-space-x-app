@@ -79,7 +79,7 @@ export function DragonsView() {
                 /> 
             }
  
-            <NavbarNavigation />
+            <NavbarNavigation currentRoute={'dragons'}/>
         </Container>
 
     ); 

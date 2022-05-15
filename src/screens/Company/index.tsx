@@ -13,6 +13,8 @@ import Space from '../../assets/Space.svg'
 import { getCompanyService } from '../../services/Comapany';
 import { CompanyCarton } from '../../components/CompanyCarton';
 import { Linking } from 'react-native';
+import {useRoute} from '@react-navigation/native';
+
 import {
     Container,
     Header,
@@ -34,6 +36,7 @@ export function CompanyView() {
     const navigation = useNavigation<any>()
     const theme = useTheme();
     const [companyData, setCompanyData] = useState<any[]>();
+    const route = useRoute();
 
     async function redirectSocialMidia(link :string){
         Linking.openURL(link)
@@ -55,6 +58,9 @@ export function CompanyView() {
     }, []);
 
 
+    useEffect(()=>{
+        console.log(route); 
+    }, []);
 
     return (
         <Container>
@@ -104,7 +110,7 @@ export function CompanyView() {
                 </ScrollView>
             }
 
-            <NavbarNavigation />
+            <NavbarNavigation currentRoute={'company'}  />
         </Container>
 
     );
