@@ -39,7 +39,7 @@ export function NavbarNavigation() {
                 </ButtonNextScreen>
 
                 <ButtonNextScreen onPress={() => handleStarlinks('Company')}>
-                    <ImageScreen name={'rocket'} />
+                    <ImageScreen name={'domain'} />
                 </ButtonNextScreen>
             </View>
 

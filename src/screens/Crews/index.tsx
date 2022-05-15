@@ -86,17 +86,7 @@ export function CrewsViews() {
                     showsVerticalScrollIndicator={false}
                     style={{backgroundColor: '#f2f2f2', padding: 24}}
                 /> 
-            }
-
-            {/* <MyCarsButtom onPress={handleOpenMyCars}>
-                <Ionicons
-                    name="ios-car-sport"
-                    size={32}
-                    color={theme.colors.shape}
-
-                />
-            </MyCarsButtom> */}
-
+            } 
             <NavbarNavigation />
         </Container>
 

@@ -40,13 +40,7 @@ export const CarList = styled(FlatList).attrs({
    showsVerticalScrollIndicator: false
 })` ` as React.ComponentType as new <CarDTO>() => FlatList<CarDTO>;
 
-// export const RocketsList = styled(FlatList).attrs({
-//     contentContainerStyle: {
-//      padding: 24
-//     },
-//     showsVerticalScrollIndicator: false
-//  })` ` as React.ComponentType as new <any> () => FlatList<any>;
-
+ 
 export const MyCarsButtom = styled(RectButton)`
     width: 60px;
     height: 60px;
@@ -61,4 +55,38 @@ export const MyCarsButtom = styled(RectButton)`
     position: absolute;
     bottom: 13px;
     right: 22px;
+`;
+
+export const TextJob = styled.Text`
+  font-size: ${RFValue(25)}px;
+    font-family: ${({ theme }) => theme.fonts.secondary_600};
+    color:  white;
+`;
+
+export const Description = styled.Text`
+  font-size: ${RFValue(18)}px;
+    font-family: ${({ theme }) => theme.fonts.secondary_400};
+    color:  ${({ theme }) => theme.colors.text};
+    margin-left: 24px;
+    margin-right: 24px;
+`;
+
+export const ImageCreator = styled.Image`
+    width: 350px;
+    height: 200px;
+`;
+
+export const ButtonRedirectetSocialMidia = styled.TouchableOpacity`
+    margin-top: 24px;
+    width: 350px;
+    height: 50px;
+    background-color: #2e2c2c;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const TitleSocialMidia = styled.Text`
+    font-size: ${RFValue(18)}px;
+    font-family: ${({ theme }) => theme.fonts.secondary_400};
+    color:  ${({ theme }) => theme.colors.text};
 `;

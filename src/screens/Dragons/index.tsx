@@ -12,6 +12,7 @@ import { Load } from '../../components/Load';
 
 import { getDragonsService } from '../../services/Dragons';
 import { Dragon } from '../../components/Dragon';
+import { DragonTypes } from '../../components/Dragon/types';
 
 import {
     Container,
@@ -27,7 +28,7 @@ export function DragonsView() {
     const [loading, setLoading] = useState(true)
     const navigation = useNavigation<any>()
     const theme = useTheme(); 
-    const [starlinksList, setStarlinksList] = useState<any[]>();
+    const [starlinksList, setStarlinksList] = useState<DragonTypes[]>();
  
     useEffect(() => {  
         async function runGetService() {

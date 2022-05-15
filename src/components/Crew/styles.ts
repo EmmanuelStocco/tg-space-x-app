@@ -76,6 +76,6 @@ export const Type = styled.View`
 `;
 
 export const RocketImage = styled.Image`
-    width: 167px;
+    width: 200px;
     height: 92px;
 `;
