@@ -2,7 +2,6 @@ import React from 'react';
 
 import { StyleSheet, Text, View } from 'react-native';
 import moment from 'moment';
-import { Linking } from 'react-native';
 
 import {
     Container,
@@ -17,20 +16,14 @@ import {
     RocketImage,
     ViewDiameter,
     TitleDiameter,
-    TextButton,
-    ButtonRedirectWikipedia,
+
 } from './styles';
 
 import { CrewTypes } from './types'
 
 
 export function Crew({ data, ...rest }: CrewTypes) {  
-    const valuewikipedia = data.wikipedia;
-
-    async function redirectWikipedia(link :string){
-        Linking.openURL(link)
-    }
-
+    
     return ( 
 
         <Container style={{
@@ -38,14 +31,8 @@ export function Crew({ data, ...rest }: CrewTypes) {
             shadowOpacity: 0.30,
             shadowRadius: 4.65,
             elevation: 8,
-            backgroundColor: 'white',
-            flexDirection: 'row'
+            backgroundColor: 'white'
         }}>
-               <RocketImage
-                source={{ uri: data.image }}
-                resizeMode="contain" //autoajuste para imagens acima    
-            /> 
-
             <Details>
                 <Name>{data.name}</Name>
 
@@ -58,23 +45,23 @@ export function Crew({ data, ...rest }: CrewTypes) {
 
                         <ViewDiameter>
                             <TitleDiameter>Status: </TitleDiameter>
-                            <Diameter>{data.status ? 'ativo' : 'inativo'}</Diameter>
+                            <Diameter>{data.status}</Diameter>
                         </ViewDiameter>
 
-                        <ViewDiameter style={{ flexDirection: 'column', marginTop: 5}}>
-                            <TitleDiameter> Quer saber mais? </TitleDiameter>
+                        <ViewDiameter>
+                            <TitleDiameter>Mais informações: </TitleDiameter>
                             {/* <Diameter>{data.wikipedia}</Diameter> */}
                             {/**Link react native diminuido */}
-                            <ButtonRedirectWikipedia onPress={() => redirectWikipedia(data.wikipedia)}>
-                                <TextButton> Clique aqui </TextButton>
-                            </ButtonRedirectWikipedia>
-                         </ViewDiameter>
+                        </ViewDiameter>
  
                     </Rent> 
                 </About> 
             </Details>
 
-         
+            <RocketImage
+                source={{ uri: data.image }}
+                resizeMode="contain" //autoajuste para imagens acima    
+            />
         </Container>
     );
 }

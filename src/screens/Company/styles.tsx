@@ -90,3 +90,9 @@ export const TitleSocialMidia = styled.Text`
     font-family: ${({ theme }) => theme.fonts.secondary_400};
     color:  ${({ theme }) => theme.colors.text};
 `;
+
+export const TextButton = styled.Text`
+    font-size: ${RFValue(18)}px;
+    font-family: ${({ theme }) => theme.fonts.secondary_400};
+    color:  ${({ theme }) => theme.colors.text};
+`;

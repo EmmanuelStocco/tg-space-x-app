@@ -5,10 +5,10 @@ import styled from 'styled-components/native';
                                              
 export const Container = styled(TouchableOpacity)`
     width: 100%;
-    height:auto;
+    height: 126px;
     background-color: ${({ theme }) => theme.colors.background_secondary};
 
-     
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
 
@@ -76,24 +76,6 @@ export const Type = styled.View`
 `;
 
 export const RocketImage = styled.Image`
-    width: 150px;
-    height: 200px; 
-`;
-
-
-export const ButtonRedirectWikipedia = styled.TouchableOpacity`
-    margin-top: 5px;
-    width: 100px;
-    height: 30px;
-    background-color: #2e2c2c;
-    justify-content: center;
-    align-items: center;
-    border-radius: 4px;
-`;
-
-
-export const TextButton = styled.Text`
-    font-size: ${RFValue(14)}px;
-    font-family: ${({ theme }) => theme.fonts.secondary_400};
-    color:  #FFFFFF;
+    width: 200px;
+    height: 92px;
 `;
