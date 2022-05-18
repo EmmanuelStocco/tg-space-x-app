@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import { StyleSheet, Text, View } from 'react-native';
+import { Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import moment from 'moment';
 
 import {
@@ -20,15 +20,19 @@ import {
 } from './styles';
 
 import { DragonTypes } from './types'
+import { DragonContextModal } from '../DragonContextModal';
 
 
 export function Dragon({ data, ...rest }: DragonTypes) {
     //console.log(data);
     console.log(data.name);
-    
+    const [modalActive, setModalActive] = useState<boolean>(false);
+
     return (
         
-        <Container style={{
+        <Container 
+        onPress={()=> setModalActive(true)}
+        style={{
             shadowColor: "#000", shadowOffset: { width: 0, height: 4, },
             shadowOpacity: 0.30,
             shadowRadius: 4.65,
@@ -75,6 +79,31 @@ export function Dragon({ data, ...rest }: DragonTypes) {
                 source={{ uri: data.flickr_images[0] }}
                 resizeMode="contain" //autoajuste para imagens acima    
             />
+
+             {/* Modal cards */}
+             <Modal
+                animationType='fade'
+                transparent={true}
+                visible={modalActive}
+                onRequestClose={() => setModalActive(false)}
+            >
+                <TouchableOpacity onPress={() => setModalActive(false)} style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0,0,0,0.2)' }}>
+                    <View style={{ backgroundColor: 'white', borderRadius: 4, width: 300, height: 350, alignItems: 'center' }}>
+                        <DragonContextModal 
+                             name={data.name}
+                             otherPhoto={data.flickr_images[1] ?? data.flickr_images[0]}
+                             material={data.heat_shield.material}
+                             trunk={data.trunk.trunk_volume.cubic_meters}
+                             drayMass={data.dry_mass_kg}
+                             orbit_duration_yr={data.orbit_duration_yr}
+                             firstFly={data.first_flight}
+
+
+                        />
+                        
+                    </View>
+                </TouchableOpacity>
+            </Modal>
         </Container>
     );
 }

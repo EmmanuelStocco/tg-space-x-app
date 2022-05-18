@@ -88,7 +88,8 @@ export function CompanyView() {
                 <ScrollView style={{ backgroundColor: '#636161' }}>
                     <View style={{ alignItems: 'center' }}>
                         <TextJob> Empresa </TextJob>
-                        <Description>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci delectus quisquam quaerat aliquam. Excepturi facere quae deserunt dicta ullam. Quos molestias odio quae, consequuntur expedita fugit dolor quod ipsum dolorem.s</Description>
+                        <Description>Nascida com a missão de revolucionar a tecnologia espacial, a SpaceX projeta, fabrica e lança foguetes que, atualmente, entregam cargas na órbita terrestre. Apesar disso, o foco principal da companhia é permitir que as pessoas possam habitar outros planetas.
+</Description>
                     </View>
 
                     <View style={{ alignItems: 'center' }}>

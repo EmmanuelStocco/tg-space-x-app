@@ -85,10 +85,10 @@ export function Home() {
             >
                 <TouchableOpacity onPress={() => setOpenModal(false)} style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.2)' }}>
                     <View style={{ justifyContent: 'center', backgroundColor: 'white', borderRadius: 4, padding: 12, marginTop: 70, marginLeft: 20, width: 200, position: 'absolute', height: 100, alignItems: 'center' }}>
-                        <Text style={{}}> DESEJA SAIR DO APLICATIVO? </Text>
+                        <Text style={{ fontFamily: "Archivo_400Regular",}}> DESEJA SAIR DO APLICATIVO? </Text>
                         <View style={{ flexDirection: 'row' }}>
-                            <TouchableOpacity style={{ backgroundColor: 'red', alignItems: 'center', padding: 4, borderRadius: 4, width: 75 }} onPress={() => setOpenModal(false)}  ><Text style={{}}>Cancelar</Text></TouchableOpacity>
-                            <TouchableOpacity style={{ backgroundColor: 'green', alignItems: 'center', padding: 4, borderRadius: 4, marginLeft: 8, width: 75 }} onPress={() => handleEsqOpen()}><Text style={{}}>SIM</Text></TouchableOpacity>
+                            <TouchableOpacity style={{ backgroundColor: 'red', alignItems: 'center', padding: 4, borderRadius: 4, width: 75 }} onPress={() => setOpenModal(false)}  ><Text style={{ fontFamily: "Archivo_400Regular",}}>Cancelar</Text></TouchableOpacity>
+                            <TouchableOpacity style={{ backgroundColor: 'green', alignItems: 'center', padding: 4, borderRadius: 4, marginLeft: 8, width: 75 }} onPress={() => handleEsqOpen()}><Text style={{ fontFamily: "Archivo_400Regular",}}>SIM</Text></TouchableOpacity>
                         </View>
                     </View>
                 </TouchableOpacity>
