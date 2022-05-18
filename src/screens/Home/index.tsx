@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { StatusBar, FlatList, Text, View, Modal, TouchableOpacity, Image } from 'react-native'
 import { RFValue } from 'react-native-responsive-fontsize'
 import Logo from '../../assets/logo.svg'
-import { Load } from '../../components/Load'; 
+import { Load } from '../../components/Load';
 import RocketP from '../../assets/RocketP.png'
 
 
@@ -24,9 +24,10 @@ export function Home() {
     const [modalActive, setModalActive] = useState<boolean>(false);
     const [openModal, setOpenModal] = useState<boolean>(false);
 
-    function handleOpenModal(value :boolean){
-        setOpenModal(value);
-   }
+    const handleEsqOpen = async () => {
+        alert('saindo');
+
+    };
 
     useEffect(() => {
         async function runGetServiceRockets() {
@@ -49,11 +50,11 @@ export function Home() {
                 backgroundColor='transparent'
                 translucent
             />
-                        <Header>
+            <Header>
                 <HeaderContent>
-                    <TouchableOpacity style={{ width: 30, height:30}} onPress={()=> handleOpenModal(!openModal)}>
-                        <Image source={RocketP} style={{  width: 30, height:30}}></Image>
-                    </TouchableOpacity> 
+                    <TouchableOpacity style={{ width: 30, height: 30 }} onPress={() => setOpenModal(!openModal)}>
+                        <Image source={RocketP} style={{ width: 30, height: 30 }}></Image>
+                    </TouchableOpacity>
 
                     <TotalCars>
                         Total de {rocketsList?.length} Naves
@@ -73,8 +74,26 @@ export function Home() {
                 />
             }
 
-            <NavbarNavigation currentRoute={'rocket'} />  
-        </Container> 
+            <NavbarNavigation currentRoute={'rocket'} />
+
+            {/* Modal esq */}
+            <Modal
+                animationType='fade'
+                transparent={true}
+                visible={openModal}
+                onRequestClose={() => set(false)}
+            >
+                <TouchableOpacity onPress={() => setOpenModal(false)} style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.2)' }}>
+                    <View style={{ justifyContent: 'center', backgroundColor: 'white', borderRadius: 4, padding: 12, marginTop: 70, marginLeft: 20, width: 200, position: 'absolute', height: 100, alignItems: 'center' }}>
+                        <Text style={{}}> DESEJA SAIR DO APLICATIVO? </Text>
+                        <View style={{ flexDirection: 'row' }}>
+                            <TouchableOpacity style={{ backgroundColor: 'red', alignItems: 'center', padding: 4, borderRadius: 4, width: 75 }} onPress={() => setOpenModal(false)}  ><Text style={{}}>Cancelar</Text></TouchableOpacity>
+                            <TouchableOpacity style={{ backgroundColor: 'green', alignItems: 'center', padding: 4, borderRadius: 4, marginLeft: 8, width: 75 }} onPress={() => handleEsqOpen()}><Text style={{}}>SIM</Text></TouchableOpacity>
+                        </View>
+                    </View>
+                </TouchableOpacity>
+            </Modal>
+            
+        </Container>
     );
 }
- 

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import { Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import moment from 'moment';
+import { HomeContextModal } from '../HomeContextModal';
 
 import {
     Container,
@@ -65,6 +66,7 @@ export function Rocket({ data, ...rest }: RocketTypes) {
                 resizeMode="contain" //autoajuste para imagens acima    
             />
 
+            {/* Modal cards */}
             <Modal
                 animationType='fade'
                 transparent={true}
@@ -72,12 +74,22 @@ export function Rocket({ data, ...rest }: RocketTypes) {
                 onRequestClose={() => setModalActive(false)}
             >
                 <TouchableOpacity onPress={() => setModalActive(false)} style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0,0,0,0.2)' }}>
-                    <View style={{ backgroundColor: 'white', borderRadius: 4, padding: 12, width: 300, height: 300, alignItems: 'center' }}>
-                        
+                    <View style={{ backgroundColor: 'white', borderRadius: 4, width: 300, height: 350, alignItems: 'center' }}>
+                        <HomeContextModal 
+                            heigth={data.height.meters}
+                            name={data.name}
+                            propellant={data.engines.propellant_1}
+                            thrust_vacuum={data.engines.thrust_vacuum.kN}
+                            version={data.engines.version}
+                            propellant_2={data.engines.propellant_2}
+                            otherPhoto={data.flickr_images[1] ?? data.flickr_images[0]}
+                           
+                        />
                     </View>
                 </TouchableOpacity>
             </Modal>
 
+            
 
         </Container>
     );
