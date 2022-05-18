@@ -41,17 +41,35 @@ export function Starlink({ data, ...rest }: StarlinkTypes) {
                     <Rent>
                         <ViewDiameter>
                             <TitleDiameter>Inclinação: </TitleDiameter>
-                            <Diameter>{data?.INCLINATION}</Diameter>
+                            <Diameter>{data.spaceTrack.INCLINATION}</Diameter>
                         </ViewDiameter>
 
                         <ViewDiameter>
                             <TitleDiameter>EXCENTRICIDADE: </TitleDiameter>
-                            <Diameter>{data?.ECCENTRICITY}</Diameter>
+                            <Diameter>{data.spaceTrack.ECCENTRICITY}</Diameter>
                         </ViewDiameter>
 
                         <ViewDiameter>
                             <TitleDiameter>Data de criação: </TitleDiameter>
-                            <Diameter>{moment(data?.CREATION_DATE).format("DD/MM/YYYY")}</Diameter>
+                            <Diameter>{moment(data.spaceTrack.CREATION_DATE).format("DD/MM/YYYY")}</Diameter>
+                        </ViewDiameter>
+ 
+                    </Rent> 
+
+                    <Rent>
+                        <ViewDiameter>
+                            <TitleDiameter>Centro: </TitleDiameter>
+                            <Diameter>{data.spaceTrack.CENTER_NAME}</Diameter>
+                        </ViewDiameter>
+
+                        <ViewDiameter>
+                            <TitleDiameter>REFERÊNCIA: </TitleDiameter>
+                            <Diameter>{data.spaceTrack.REF_FRAME}</Diameter>
+                        </ViewDiameter>
+
+                        <ViewDiameter>
+                            <TitleDiameter>Lançamento: </TitleDiameter>
+                            <Diameter>{moment(data.spaceTrack.LAUNCH_DATE).format("DD/MM/YYYY")}</Diameter>
                         </ViewDiameter>
  
                     </Rent> 

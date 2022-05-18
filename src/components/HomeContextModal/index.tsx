@@ -48,8 +48,8 @@ export function HomeContextModal({ name, heigth, propellant_2, version, thrust_v
 
                     <BlockTwo>
                          <TextBlock>Propulsores:</TextBlock>
-                         <TextPropellant>{propellant}</TextPropellant>
-                         <TextPropellant>{propellant_2}</TextPropellant>
+                         <TextPropellant>- {propellant}</TextPropellant>
+                         <TextPropellant>- {propellant_2}</TextPropellant>
                         
                     </BlockTwo>
 
