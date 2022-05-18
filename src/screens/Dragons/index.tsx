@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { StatusBar, FlatList, Text } from 'react-native'
+import { StatusBar, FlatList, Text, TouchableOpacity, Image } from 'react-native'
 import { RFValue } from 'react-native-responsive-fontsize'
 import { Ionicons } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native';
 import { useTheme } from 'styled-components';
 import Logo from '../../assets/logo.svg' 
 import { NavbarNavigation } from '../../components/NavbarNavigation';
+import RocketP from '../../assets/RocketP.png'
 
 import { CarDTO } from '../../dtos/CarDTO';  
 import { Load } from '../../components/Load';
@@ -29,7 +30,12 @@ export function DragonsView() {
     const navigation = useNavigation<any>()
     const theme = useTheme(); 
     const [starlinksList, setStarlinksList] = useState<DragonTypes[]>();
- 
+    const [openModal, setOpenModal] = useState<boolean>(false);
+
+    function handleOpenModal(value :boolean){
+         setOpenModal(value);
+    }
+
     useEffect(() => {  
         async function runGetService() {
             try {
@@ -53,12 +59,11 @@ export function DragonsView() {
                 backgroundColor='transparent'
                 translucent
             />
-            <Header>
+               <Header>
                 <HeaderContent>
-                    <Space
-                        width={RFValue(108)}
-                        height={RFValue(12)}
-                    />
+                    <TouchableOpacity style={{ width: 30, height:30}} onPress={()=> handleOpenModal(!openModal)}>
+                        <Image source={RocketP} style={{  width: 30, height:30}}></Image>
+                    </TouchableOpacity>  
 
                     <TotalCars>
                         Total de {starlinksList?.length} Dragons

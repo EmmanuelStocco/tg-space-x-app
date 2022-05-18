@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { StatusBar, FlatList, Text, View } from 'react-native'
+import { StatusBar, FlatList, Text, View, Modal, TouchableOpacity, Image } from 'react-native'
 import { RFValue } from 'react-native-responsive-fontsize'
 import Logo from '../../assets/logo.svg'
-import { Load } from '../../components/Load';
-import Space from '../../assets/Space.svg'
+import { Load } from '../../components/Load'; 
+import RocketP from '../../assets/RocketP.png'
 
 
 import { getRocketsService } from '../../services/Rockets';
@@ -21,8 +21,14 @@ import {
 export function Home() {
     const [loading, setLoading] = useState(true)
     const [rocketsList, setRocketsList] = useState<any[]>();
+    const [modalActive, setModalActive] = useState<boolean>(false);
+    const [openModal, setOpenModal] = useState<boolean>(false);
 
-    useEffect(() => { 
+    function handleOpenModal(value :boolean){
+        setOpenModal(value);
+   }
+
+    useEffect(() => {
         async function runGetServiceRockets() {
             try {
                 const res = await getRocketsService();
@@ -33,7 +39,7 @@ export function Home() {
             } finally {
                 setLoading(false)
             }
-        } 
+        }
         runGetServiceRockets();
     }, []);
 
@@ -43,13 +49,11 @@ export function Home() {
                 backgroundColor='transparent'
                 translucent
             />
-            <Header>
+                        <Header>
                 <HeaderContent>
-                    <Space
-                        width={RFValue(108)}
-                        height={RFValue(12)}
-                        style={{ backgroundColor:' white'}}
-                    />
+                    <TouchableOpacity style={{ width: 30, height:30}} onPress={()=> handleOpenModal(!openModal)}>
+                        <Image source={RocketP} style={{  width: 30, height:30}}></Image>
+                    </TouchableOpacity> 
 
                     <TotalCars>
                         Total de {rocketsList?.length} Naves
@@ -69,8 +73,8 @@ export function Home() {
                 />
             }
 
-            <NavbarNavigation currentRoute={'rocket'}/>
-        </Container>
-
+            <NavbarNavigation currentRoute={'rocket'} />  
+        </Container> 
     );
 }
+ 

@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import { StyleSheet, Text, View } from 'react-native';
+import { Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import moment from 'moment';
 
 import {
@@ -22,17 +22,20 @@ import {
 import { RocketTypes } from './types'
 
 
-export function Rocket({ data, ...rest }: RocketTypes) { 
-    
+export function Rocket({ data, ...rest }: RocketTypes) {
+    const [modalActive, setModalActive] = useState<boolean>(false);
+
     return (
 
-        <Container style={{
-            shadowColor: "#000", shadowOffset: { width: 0, height: 4, },
-            shadowOpacity: 0.30,
-            shadowRadius: 4.65,
-            elevation: 8,
-            backgroundColor: 'white'
-        }}>
+        <Container
+            onPress={() => setModalActive(true)}
+            style={{
+                shadowColor: "#000", shadowOffset: { width: 0, height: 4, },
+                shadowOpacity: 0.30,
+                shadowRadius: 4.65,
+                elevation: 8,
+                backgroundColor: 'white'
+            }}>
             <Details>
                 <Name>{data.name}</Name>
 
@@ -52,15 +55,30 @@ export function Rocket({ data, ...rest }: RocketTypes) {
                             <TitleDiameter>Primeiro Voo: </TitleDiameter>
                             <Diameter>{moment(data.first_flight).format("DD/MM/YYYY")}</Diameter>
                         </ViewDiameter>
- 
-                    </Rent> 
-                </About> 
+
+                    </Rent>
+                </About>
             </Details>
 
             <RocketImage
                 source={{ uri: data.flickr_images[0] }}
                 resizeMode="contain" //autoajuste para imagens acima    
             />
+
+            <Modal
+                animationType='fade'
+                transparent={true}
+                visible={modalActive}
+                onRequestClose={() => setModalActive(false)}
+            >
+                <TouchableOpacity onPress={() => setModalActive(false)} style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0,0,0,0.2)' }}>
+                    <View style={{ backgroundColor: 'white', borderRadius: 4, padding: 12, width: 300, height: 300, alignItems: 'center' }}>
+                        
+                    </View>
+                </TouchableOpacity>
+            </Modal>
+
+
         </Container>
     );
 }

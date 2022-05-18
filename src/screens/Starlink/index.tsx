@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StatusBar, FlatList, Text } from 'react-native'
+import { StatusBar, FlatList, Text, TouchableOpacity, Image } from 'react-native'
 import { RFValue } from 'react-native-responsive-fontsize'
 import { Ionicons } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native';
@@ -10,6 +10,7 @@ import Space from '../../assets/Space.svg'
 
 import { CarDTO } from '../../dtos/CarDTO';  
 import { Load } from '../../components/Load';
+import RocketP from '../../assets/RocketP.png'
 
 import { getStarlinksService } from '../../services/Starlinks';
 import { Starlink } from '../../components/Starlink';
@@ -28,6 +29,7 @@ export function StarlinkView() {
     const [loading, setLoading] = useState(true)
     const navigation = useNavigation<any>()
     const theme = useTheme(); 
+    const [openModal, setOpenModal] = useState<boolean>(false);
 
     const [starlinksList, setStarlinksList] = useState<any[]>();
 
@@ -38,7 +40,9 @@ export function StarlinkView() {
     function handleOpenMyCars() {
         navigation.navigate('MyCars')
     }
-
+    function handleOpenModal(value :boolean){
+        setOpenModal(value);
+   }
 
     useEffect(() => { 
 
@@ -64,11 +68,11 @@ export function StarlinkView() {
                 backgroundColor='transparent'
                 translucent
             />
-            <Header>
+            <Header> 
                 <HeaderContent>
-                    <Space
-                       
-                    />
+                    <TouchableOpacity style={{ width: 30, height:30}} onPress={()=> handleOpenModal(!openModal)}>
+                        <Image source={RocketP} style={{  width: 30, height:30}}></Image>
+                    </TouchableOpacity>  
 
                     <TotalCars>
                         Total de {starlinksList?.length} Starlinks

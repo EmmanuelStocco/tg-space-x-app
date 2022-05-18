@@ -25,6 +25,7 @@ export const HeaderContent = styled.View`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+
 `;  
 
 export const TotalCars = styled.Text`
@@ -61,4 +62,9 @@ export const MyCarsButtom = styled(RectButton)`
     position: absolute;
     bottom: 13px;
     right: 22px;
+`;
+
+export const LogoImage = styled.Image`
+    width: 50px;
+    height: 50px;
 `;
