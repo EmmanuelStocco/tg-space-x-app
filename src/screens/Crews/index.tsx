@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StatusBar, FlatList, Text, TouchableOpacity, Image } from 'react-native'
+import { StatusBar, FlatList, Text, TouchableOpacity, Image, View, BackHandler } from 'react-native'
 import { RFValue } from 'react-native-responsive-fontsize'
 import { Ionicons } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native';
@@ -10,7 +10,7 @@ import { Modal } from 'react-native';
 import { NavbarNavigation } from '../../components/NavbarNavigation';
 import Space from '../../assets/Space.svg'
 import { CarDTO } from '../../dtos/CarDTO';
-import { Load } from '../../components/Load'; 
+import { Load } from '../../components/Load';
 
 import { getCrewService } from '../../services/Crew';
 import { Crew } from '../../components/Crew';
@@ -34,9 +34,13 @@ export function CrewsViews() {
     const [crewsList, setCrewsList] = useState<any[]>();
     const [openModal, setOpenModal] = useState<boolean>(false);
 
-    function handleOpenModal(value :boolean){
-         setOpenModal(value);
+    function handleOpenModal(value: boolean) {
+        setOpenModal(value);
     }
+    const handleEsqOpen = async () => { 
+        setOpenModal(false)
+        BackHandler.exitApp()
+    };
 
     useEffect(() => {
         async function runGetService() {
@@ -63,17 +67,17 @@ export function CrewsViews() {
             />
             <Header>
                 <HeaderContent>
-                    <TouchableOpacity style={{ width: 30, height:30}} onPress={()=> handleOpenModal(!openModal)}>
-                        <Image source={RocketP} style={{  width: 30, height:30}}></Image>
-                    </TouchableOpacity>  
+                    <TouchableOpacity style={{ width: 30, height: 30 }} onPress={() => handleOpenModal(!openModal)}>
+                        <Image source={RocketP} style={{ width: 30, height: 30 }}></Image>
+                    </TouchableOpacity>
                     <TotalCars>
                         Total de {crewsList?.length} Tripulantes Dragons
                     </TotalCars>
                 </HeaderContent>
             </Header>
 
-            
-             
+
+
 
             {loading ? <Load /> :
 
@@ -89,7 +93,23 @@ export function CrewsViews() {
             }
             <NavbarNavigation currentRoute={'crews'} />
 
-
+            {/* Modal esq */}
+            <Modal
+                animationType='fade'
+                transparent={true}
+                visible={openModal}
+                onRequestClose={() => setOpenModal(false)}
+            >
+                <TouchableOpacity onPress={() => setOpenModal(false)} style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.2)' }}>
+                    <View style={{ justifyContent: 'center', backgroundColor: 'white', borderRadius: 4, padding: 12, marginTop: 70, marginLeft: 20, width: 200, position: 'absolute', height: 100, alignItems: 'center' }}>
+                        <Text style={{ fontFamily: "Archivo_400Regular", }}> DESEJA SAIR DO APLICATIVO? </Text>
+                        <View style={{ flexDirection: 'row' }}>
+                            <TouchableOpacity style={{ backgroundColor: 'red', alignItems: 'center', padding: 4, borderRadius: 4, width: 75 }} onPress={() => setOpenModal(false)}  ><Text style={{ fontFamily: "Archivo_400Regular", }}>Cancelar</Text></TouchableOpacity>
+                            <TouchableOpacity style={{ backgroundColor: 'green', alignItems: 'center', padding: 4, borderRadius: 4, marginLeft: 8, width: 75 }} onPress={() => handleEsqOpen()}><Text style={{ fontFamily: "Archivo_400Regular", }}>SIM</Text></TouchableOpacity>
+                        </View>
+                    </View>
+                </TouchableOpacity>
+            </Modal>
 
         </Container>
 

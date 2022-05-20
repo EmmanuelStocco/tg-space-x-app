@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StatusBar, FlatList, Text, View, Modal, TouchableOpacity, Image } from 'react-native'
+import { StatusBar, FlatList, Text, View, Modal, TouchableOpacity, Image, BackHandler } from 'react-native'
 import { RFValue } from 'react-native-responsive-fontsize'
 import Logo from '../../assets/logo.svg'
 import { Load } from '../../components/Load';
@@ -24,11 +24,13 @@ export function Home() {
     const [modalActive, setModalActive] = useState<boolean>(false);
     const [openModal, setOpenModal] = useState<boolean>(false);
 
-    const handleEsqOpen = async () => {
-        alert('saindo');
-
+    const handleEsqOpen = async () => { 
+        setOpenModal(false)
+        BackHandler.exitApp()
     };
 
+  
+    
     useEffect(() => {
         async function runGetServiceRockets() {
             try {
@@ -81,7 +83,7 @@ export function Home() {
                 animationType='fade'
                 transparent={true}
                 visible={openModal}
-                onRequestClose={() => set(false)}
+                onRequestClose={() => setOpenModal(false)}
             >
                 <TouchableOpacity onPress={() => setOpenModal(false)} style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.2)' }}>
                     <View style={{ justifyContent: 'center', backgroundColor: 'white', borderRadius: 4, padding: 12, marginTop: 70, marginLeft: 20, width: 200, position: 'absolute', height: 100, alignItems: 'center' }}>

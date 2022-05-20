@@ -62,3 +62,22 @@ export const MyCarsButtom = styled(RectButton)`
     bottom: 13px;
     right: 22px;
 `;
+
+
+export const Description = styled.View`
+    width: 100%;
+    height: 250px;
+    background-color: black;
+    padding-horizontal: 24px;
+`;
+
+export const HeaderDescription = styled.View`
+    width: 100%;
+    height: 100%;  
+`;
+
+export const DescriptionText = styled.Text`
+   font-size: ${RFValue(15)}px;
+    font-family: ${({ theme }) => theme.fonts.primary_400};
+    color:  ${({ theme }) => theme.colors.text};
+`;

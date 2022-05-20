@@ -12,7 +12,7 @@ import {
 } from './styles';
 import { useEffect } from 'react';
 
-export function NavbarNavigation({ currentRoute } :string) {
+export function NavbarNavigation({ currentRoute } :any) {
     const navigation = useNavigation<any>()
     const route = useRoute();
 

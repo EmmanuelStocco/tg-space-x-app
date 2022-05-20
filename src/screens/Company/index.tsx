@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StatusBar, FlatList, Text, View, TouchableOpacity, Image } from 'react-native'
+import { StatusBar, FlatList, Text, View, TouchableOpacity, Image, BackHandler, Modal } from 'react-native'
 import { RFValue } from 'react-native-responsive-fontsize'
 import { Ionicons } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native';
@@ -47,6 +47,10 @@ export function CompanyView() {
     async function redirectSocialMidia(link :string){
         Linking.openURL(link)
     }
+    const handleEsqOpen = async () => { 
+        setOpenModal(false)
+        BackHandler.exitApp()
+    };
 
     useEffect(() => {
         async function runGetService() {
@@ -119,6 +123,24 @@ export function CompanyView() {
             }
 
             <NavbarNavigation currentRoute={'company'}  />
+
+            {/* Modal esq */}
+            <Modal
+                animationType='fade'
+                transparent={true}
+                visible={openModal}
+                onRequestClose={() => setOpenModal(false)}
+            >
+                <TouchableOpacity onPress={() => setOpenModal(false)} style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.2)' }}>
+                    <View style={{ justifyContent: 'center', backgroundColor: 'white', borderRadius: 4, padding: 12, marginTop: 70, marginLeft: 20, width: 200, position: 'absolute', height: 100, alignItems: 'center' }}>
+                        <Text style={{ fontFamily: "Archivo_400Regular",}}> DESEJA SAIR DO APLICATIVO? </Text>
+                        <View style={{ flexDirection: 'row' }}>
+                            <TouchableOpacity style={{ backgroundColor: 'red', alignItems: 'center', padding: 4, borderRadius: 4, width: 75 }} onPress={() => setOpenModal(false)}  ><Text style={{ fontFamily: "Archivo_400Regular",}}>Cancelar</Text></TouchableOpacity>
+                            <TouchableOpacity style={{ backgroundColor: 'green', alignItems: 'center', padding: 4, borderRadius: 4, marginLeft: 8, width: 75 }} onPress={() => handleEsqOpen()}><Text style={{ fontFamily: "Archivo_400Regular",}}>SIM</Text></TouchableOpacity>
+                        </View>
+                    </View>
+                </TouchableOpacity>
+            </Modal>
         </Container>
 
     );
