@@ -93,8 +93,7 @@ export function StarlinkView() {
 
 
             {loading ? <Load /> :
-
-                <SafeAreaView> 
+ 
                             
                     <FlatList
                         data={starlinksList}
@@ -116,8 +115,7 @@ export function StarlinkView() {
                         style={{ backgroundColor: '#f2f2f2', padding: 24 }}
                     >
 
-                    </FlatList>
-                </SafeAreaView >
+                    </FlatList> 
             }
 
 
