@@ -60,13 +60,22 @@ export const MyCarsButtom = styled(RectButton)`
 export const TextJob = styled.Text`
   font-size: ${RFValue(25)}px;
     font-family: ${({ theme }) => theme.fonts.secondary_600};
-    color:  white;
+    color:  #f3f1f1;
 `;
 
 export const Description = styled.Text`
   font-size: ${RFValue(18)}px;
     font-family: ${({ theme }) => theme.fonts.secondary_400};
-    color:  ${({ theme }) => theme.colors.text};
+    color: #b4a9a9 ;
+    margin-left: 24px;
+    margin-right: 24px;
+`;
+
+
+export const DescriptionTITLE = styled.Text`
+  font-size: ${RFValue(18)}px;
+    font-family: ${({ theme }) => theme.fonts.secondary_400};
+    color: #f3f1f1 ;
     margin-left: 24px;
     margin-right: 24px;
 `;
@@ -95,4 +104,12 @@ export const TextButton = styled.Text`
     font-size: ${RFValue(18)}px;
     font-family: ${({ theme }) => theme.fonts.secondary_400};
     color:  ${({ theme }) => theme.colors.text};
+`;
+
+export const DescriptionMIN = styled.Text`
+  font-size: ${RFValue(15)}px;
+    font-family: ${({ theme }) => theme.fonts.secondary_400};
+    color: #b4a9a9 ;
+    margin-left: 24px;
+    margin-right: 24px;
 `;
