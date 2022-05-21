@@ -69,15 +69,13 @@ export const Description = styled.View`
     height: 250px;
     background-color: black;
     padding-horizontal: 24px;
+    margin-bottom: 12px;
 `;
 
 export const HeaderDescription = styled.View`
     width: 100%;
     height: 100%;  
+    align-items: center;
+    justify-content: center;
 `;
-
-export const DescriptionText = styled.Text`
-   font-size: ${RFValue(15)}px;
-    font-family: ${({ theme }) => theme.fonts.primary_400};
-    color:  ${({ theme }) => theme.colors.text};
-`;
+ 
